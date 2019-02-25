@@ -63,4 +63,6 @@ axios.interceptors.response.use(data => {
   }
   return Promise.reject(error)
 })
-export default axios
+export default {
+	axios
+}

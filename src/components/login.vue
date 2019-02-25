@@ -59,10 +59,14 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           console.log(this.ruleForm.account, this.ruleForm.password)
-          this.$axios.post('home/logoin', {
+          this.$axios.post('/api/login', {
             name: this.ruleForm.account,
             password: this.ruleForm.password
-          })
+          }).then(res => {
+            console.log((res))
+            this.$store.commit('SAVE_USERINFO', res.data.data[0])
+            this.$router.push('home')
+					})
         } else {
           console.log("error submit!!");
           return false;
